@@ -13,13 +13,14 @@ const SpellChecker = () => {
   function handleSentance(e) {
     const currentVal = e.target.value
     setSentance(currentVal);
-    const correctWords = currentVal.split(" ")
-    .filter((word) =>{
-        if(customDictionary[word])
-            return customDictionary[word];
+    const correctWords = [];
+    currentVal.split(" ")
+    .forEach((word) =>{
+        if(customDictionary[word.toLowerCase()])
+            correctWords.push(customDictionary[word.toLowerCase()]);
     
     })
-    console.log(correctWords);
+
     if(correctWords){
         setSuggestion(correctWords[0]);
     }else{
